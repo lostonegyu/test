@@ -11,11 +11,11 @@ import java.util.ArrayList;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomViewHolder> {
 
-    private ArrayList<User> arrayList;
+    private ArrayList<Member> arrayList;
     private Context context;
 
 
-    public CustomAdapter(ArrayList<User> arrayList, Context context) {
+    public CustomAdapter(ArrayList<Member> arrayList, Context context) {
         this.arrayList = arrayList;
         this.context = context;
     }
@@ -33,10 +33,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
 //        Glide.with(holder.itemView)
 //                .load(arrayList.get(position).getProfile())
 //                .into(holder.iv_profile);
-        holder.tv_name.setText(arrayList.get(position).getName());
-        holder.tv_time.setText(String.valueOf(arrayList.get(position).getTime()));
-        holder.tv_status.setText(arrayList.get(position).getStatus());
-        holder.tv_kind.setText(arrayList.get(position).getKind());
+        holder.tv_name.setText(arrayList.get(position).getBln());
+        holder.tv_time.setText(String.valueOf(arrayList.get(position).getBdt()));
+        holder.tv_status.setText(arrayList.get(position).getBst());
+        holder.tv_kind.setText(arrayList.get(position).getStat());
     }
 
     @Override
@@ -46,7 +46,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
     }
 
     public class CustomViewHolder extends RecyclerView.ViewHolder {
-        //ImageView iv_profile;
         TextView tv_name;
         TextView tv_time;
         TextView tv_status;
@@ -54,10 +53,9 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
 
         public CustomViewHolder(@NonNull View itemView) {
             super(itemView);
-            //this.iv_profile = itemView.findViewById(R.id.iv_profile);
             this.tv_name = itemView.findViewById(R.id.item_name);
             this.tv_time = itemView.findViewById(R.id.item_time);
-            this.tv_status = itemView.findViewById(R.id.item_status);
+            this.tv_status = itemView.findViewById(R.id.item_state);
             this.tv_kind = itemView.findViewById(R.id.item_kind);
         }
     }

@@ -11,11 +11,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Capstone_Design">
-
-        <activity android:name=".ResultActivity"></activity>
+        <activity android:name=".Form_ResultActivity"></activity>
+        <activity android:name=".Acquisition_Form" />
+        <activity android:name=".Lost_Form" />
+        <activity android:name=".ResultActivity" />
         <activity android:name=".View_Posts" />
         <activity android:name=".My_View_Posts" />
         <activity android:name=".Lost_and_found_form" />
+        <activity android:name=".board" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.capstone_design.board">
+
+    <ScrollView
+        android:id="@+id/board_sc"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="42dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/board_main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="서일대학교 분실물 관리"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/board_write"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#BDBDBD"
+                android:gravity="center_horizontal"
+                android:text="글쓰기"
+                android:textSize="24sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/board_name"
+                    android:layout_width="10dp"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="20dip"
+                    android:layout_marginBottom="20dip"
+                    android:layout_weight="1"
+                    android:text="종류"
+                    android:textSize="20sp" />
+
+                <Spinner
+                    android:id="@+id/board_sort"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginBottom="20dip"
+                    android:layout_weight="2"
+                    android:background="@drawable/edge"
+                    android:entries="@array/분실물종류"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/board_lostname"
+                    android:layout_width="10dp"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="20dip"
+                    android:layout_marginBottom="20dip"
+                    android:layout_weight="1"
+                    android:text="습득물 명"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/board_lostnametext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_weight="2"
+                    android:inputType="text"
+                    android:background="@drawable/edge"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/board_map"
+                    android:layout_width="10dp"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="20dip"
+                    android:layout_weight="1"
+                    android:text="습득 장소"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/board_maptext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_weight="2"
+                    android:inputType="text"
+                    android:background="@drawable/edge"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/board_maphiper"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="150dip"
+                    android:layout_marginTop="5dip"
+                    android:layout_marginRight="10dip"
+                    android:autoLink="web"
+                    android:linksClickable="true"
+                    android:text="지도에 표기하기"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/board_date"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="10dip"
+                    android:layout_marginRight="20dip"
+                    android:layout_weight="2"
+                    android:text="습득 날짜"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/board_datetext"
+                    android:layout_width="19dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="10dip"
+                    android:layout_weight="3"
+                    android:inputType="text"
+                    android:background="@drawable/edge"
+                    android:textSize="20sp" />
+
+                <ImageButton
+                    android:id="@+id/board_datebtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5
+"
+                    android:src="@android:drawable/ic_menu_today" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/board_pic"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="10dip"
+                    android:layout_marginRight="10dip"
+                    android:layout_weight="2"
+                    android:text="사진 정보"
+                    android:textSize="20sp" />
+
+                <FrameLayout
+                    android:layout_width="140dp"
+                    android:layout_height="93dp"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/main_sub"
+                        android:layout_width="206dp"
+                        android:layout_height="58dp"
+                        android:layout_marginTop="5dip"
+                        android:layout_weight="1"
+                        android:src="@android:drawable/ic_menu_camera" />
+
+                    <TextView
+                        android:id="@+id/board_camera"
+                        android:layout_width="218dp"
+                        android:layout_height="78dp"
+                        android:gravity="center|bottom"
+                        android:text="사진찍기" />
+                </FrameLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/board_picbtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="41dp"
+                    android:layout_marginLeft="150dip"
+                    android:layout_marginTop="5dip"
+                    android:layout_marginRight="10dip"
+                    android:text="불러오기" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/board_qr"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="10dip"
+                    android:layout_marginRight="10dip"
+                    android:layout_weight="2"
+                    android:text="사물함 QR 스캔"
+                    android:textSize="20sp" />
+
+                <FrameLayout
+                    android:layout_width="140dp"
+                    android:layout_height="93dp"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/imageView2"
+                        android:layout_width="206dp"
+                        android:layout_height="58dp"
+                        android:layout_marginTop="5dip"
+                        android:layout_weight="1"
+                        android:src="@android:drawable/ic_menu_camera" />
+
+                    <TextView
+                        android:id="@+id/board_qrscan"
+                        android:layout_width="218dp"
+                        android:layout_height="79dp"
+                        android:gravity="center|bottom"
+                        android:text="스캔하기" />
+                </FrameLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/board_pass"
+                    android:layout_width="9dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="10dip"
+                    android:layout_marginRight="22dip"
+                    android:layout_weight="2"
+                    android:text="일회용 비밀번호"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/board_passinput"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dip"
+                    android:layout_weight="1.5"
+                    android:background="@drawable/edge"
+                    android:inputType="numberPassword"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/board_cont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="10dip"
+                    android:layout_marginRight="20dip"
+                    android:layout_weight="1"
+                    android:text="내용"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/board_contInput"
+                    android:layout_width="160dp"
+                    android:layout_height="170dp"
+                    android:layout_marginTop="10dip"
+                    android:layout_marginRight="10dip"
+                    android:layout_marginBottom="5dip"
+                    android:layout_weight="2"
+                    android:inputType="text"
+                    android:background="@drawable/edge"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/board_submit"
+                    android:layout_width="match_parent"
+                    android:layout_height="41dp"
+                    android:layout_marginLeft="120dip"
+                    android:layout_marginTop="5dip"
+                    android:layout_marginRight="100dip"
+                    android:text="완료" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

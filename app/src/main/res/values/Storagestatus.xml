@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="Storagestatus">
+        <item>보관중</item>
+        <item>수령 완료</item>
+        <item>기간 초과</item>
+    </string-array>
+</resources>
