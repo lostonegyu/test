@@ -6,6 +6,7 @@ public class Form {
     private String date;
     private String content;
 
+
     public Form() {
     }
 
