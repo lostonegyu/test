@@ -1,18 +1,15 @@
 package com.example.capstone_design;
 
-public class Member {
-    private String bmt;
-    private String bln;
-    private String bdt;
-    private String bpi;
-    private String bci;
-    private String bst;
-    private String stat;
+public class Member { //
+    private String bmt; // 장소
+    private String bln; // 이름
+    private String bdt; // 날짜
+    private String bpi; // 비밀번호
+    private String bci; // 내용
+    private String bst; // 종류
+    private String stat; // 물품상태
 
-
-
-    public Member() {
-    }
+    public Member() { }
 
     public String getBmt() {
         return bmt;

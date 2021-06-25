@@ -3,6 +3,7 @@ package com.example.capstone_design;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -59,6 +60,9 @@ public class Lost_and_found_form extends AppCompatActivity {
                 form.setContent(t_content.getText().toString().trim());
                 reff.child(String.valueOf(maxid+1)).setValue(form);
                 Toast.makeText(Lost_and_found_form.this,"데이터 입력 완료",Toast.LENGTH_LONG).show();
+
+                Intent intent = new Intent(Lost_and_found_form.this, MainActivity.class);
+                startActivity(intent);
             }
         });
 

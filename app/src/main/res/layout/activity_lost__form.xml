@@ -58,7 +58,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="습득물명"
+        android:text="분실물 명"
         android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline11"
         app:layout_constraintStart_toStartOf="@+id/guideline10"

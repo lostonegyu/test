@@ -86,7 +86,7 @@ public class Acquisition_Form extends AppCompatActivity {
                 Form form = arrayList.get(position);
                 Toast.makeText(getApplicationContext(), form.getDate()+' '+form.getName()+' '+form.getPlace(), Toast.LENGTH_LONG).show();
 
-                Intent intent = new Intent(getBaseContext(), Form_ResultActivity.class);
+                Intent intent = new Intent(getBaseContext(), Acquirer_Form_Result.class);
 
                 intent.putExtra("name",form.getName());
                 intent.putExtra("place",form.getPlace());

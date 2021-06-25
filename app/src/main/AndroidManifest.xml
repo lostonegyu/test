@@ -11,8 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Capstone_Design">
-        <activity android:name=".Acquirer_Form_Result"></activity>
-        <activity android:name=".Form_ResultActivity" />
+        <activity android:name=".Locker_Password_Recieved"></activity>
+        <activity android:name=".Locker_Password" />
+        <activity android:name=".Acquirer_Form_Result" />
         <activity android:name=".Acquisition_Form" />
         <activity android:name=".Lost_Form" />
         <activity android:name=".ResultActivity" />

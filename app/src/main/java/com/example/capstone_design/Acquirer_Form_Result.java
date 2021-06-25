@@ -2,15 +2,29 @@ package com.example.capstone_design;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class Acquirer_Form_Result extends AppCompatActivity {
+
+    Button pwd_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_acquirer__form__result);
+
+        pwd_btn = findViewById(R.id.pwd_btn);
+        pwd_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent_pwd = new Intent(Acquirer_Form_Result.this,Locker_Password_Recieved.class);
+                startActivity(intent_pwd);
+            }
+        });
 
         String name = "";
         String place = "";

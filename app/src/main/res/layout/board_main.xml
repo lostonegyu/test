@@ -309,7 +309,7 @@
                     android:layout_marginRight="10dip"
                     android:layout_marginBottom="5dip"
                     android:layout_weight="2"
-                    android:inputType="text"
+                    android:inputType="textMultiLine"
                     android:background="@drawable/edge"
                     android:textSize="15sp" />
             </LinearLayout>
