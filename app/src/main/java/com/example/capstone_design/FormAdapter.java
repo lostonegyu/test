@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 public class FormAdapter extends RecyclerView.Adapter<FormAdapter.FormViewHolder> {
 
+
     private ArrayList<Form> arrayList;
     private Context context;
 

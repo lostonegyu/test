@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 public class My_View_Posts extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

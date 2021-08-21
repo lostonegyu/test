@@ -24,7 +24,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class Lost_Form extends AppCompatActivity {
-
     Button acquire_btn;
 
     private RecyclerView recyclerView;

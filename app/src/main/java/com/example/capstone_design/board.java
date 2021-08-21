@@ -55,7 +55,6 @@ public class board extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
 
@@ -71,7 +70,6 @@ public class board extends AppCompatActivity {
                 member.setStat("보관중".toString().trim());
                 reff.child(String.valueOf(maxid+1)).setValue(member);
                 Toast.makeText(board.this,"데이터 입력 완료",Toast.LENGTH_LONG).show();
-
                 Intent intent = new Intent(board.this, MainActivity.class);
                 startActivity(intent);
 

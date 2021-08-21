@@ -16,6 +16,7 @@ import net.daum.mf.map.api.MapPoint;
 import net.daum.mf.map.api.MapView;
 
 public class Fragment_Locker extends Fragment {
+
     Button Locker_btn;
     private View view;
 

@@ -16,6 +16,7 @@ public class Acquirer_Adapter extends RecyclerView.Adapter<Acquirer_Adapter.Acqu
     private ArrayList<Form> arrayList;
     private Context context;
 
+
     public Acquirer_Adapter(ArrayList<Form> arrayList, Context context) {
         this.arrayList = arrayList;
         this.context = context;

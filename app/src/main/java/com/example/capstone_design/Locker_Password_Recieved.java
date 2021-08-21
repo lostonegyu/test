@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 
 public class Locker_Password_Recieved extends AppCompatActivity {
-
     Button buttonVertify,buttonDenied;
 
     @Override

@@ -1,6 +1,7 @@
 package com.example.capstone_design;
 
 public class Member { //
+
     private String bmt; // 장소
     private String bln; // 이름
     private String bdt; // 날짜

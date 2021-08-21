@@ -18,7 +18,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class Lost_and_found_form extends AppCompatActivity {
-
     EditText t_name,t_place,t_date,t_content;
     Button t_complete;
     DatabaseReference reff;

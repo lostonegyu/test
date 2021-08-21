@@ -23,6 +23,7 @@ import com.kakao.usermgmt.callback.LogoutResponseCallback;
 
 
 public class MainActivity extends AppCompatActivity {
+
     ImageButton MyPage_btn;
     Button close_btn;
     private DrawerLayout drawerLayout;

@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 public class Acquirer_Form_Result extends AppCompatActivity {
 
+
     Button pwd_btn;
 
     @Override

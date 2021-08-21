@@ -2,6 +2,7 @@ package com.example.capstone_design;
 
 public class Password {
 
+
     private String pwd;
 
     public Password() {

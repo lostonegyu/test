@@ -1,6 +1,7 @@
 package com.example.capstone_design;
 
 public class Post {
+
     private String name; // 습득물 이름
     private String  time; // 게시글 올린 시간
     private String status; // 물품 상태

@@ -25,6 +25,7 @@ import java.util.ArrayList;
 
 public class Acquisition_Form extends AppCompatActivity {
 
+
     Button lost_button;
 
     private RecyclerView recyclerView;

@@ -11,6 +11,7 @@ import com.kakao.auth.KakaoAdapter;
 import com.kakao.auth.KakaoSDK;
 
 public class CustomApplication extends Application {
+
     private static volatile CustomApplication instance = null;
 
     private static class KakaoSDKAdapter extends KakaoAdapter

@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomViewHolder> {
 
+
     private ArrayList<Member> arrayList;
     private Context context;
 

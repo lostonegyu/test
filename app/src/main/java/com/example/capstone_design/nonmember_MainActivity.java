@@ -14,6 +14,7 @@ import com.google.android.material.tabs.TabLayout;
 
 
 public class nonmember_MainActivity extends AppCompatActivity {
+
     ImageButton login_btn;
 
     private FragmentPagerAdapter fragmentPagerAdapter;

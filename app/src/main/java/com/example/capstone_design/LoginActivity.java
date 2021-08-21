@@ -31,7 +31,6 @@ import com.kakao.util.exception.KakaoException;
 import java.util.regex.Pattern;
 
 public class LoginActivity extends AppCompatActivity {
-
     private ISessionCallback mSessionCallback;
 
     private FirebaseAuth mFirebaseAuth; // 파이어베이스 인증

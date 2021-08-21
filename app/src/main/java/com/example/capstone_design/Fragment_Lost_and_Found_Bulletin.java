@@ -29,7 +29,6 @@ import java.util.ArrayList;
 public class Fragment_Lost_and_Found_Bulletin extends Fragment {
     Button Create_Posts_btn;
 
-
     private View view;
 
     private RecyclerView recyclerView;

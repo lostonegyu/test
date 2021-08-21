@@ -17,6 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class Locker_Password extends AppCompatActivity {
+
     EditText PasswordNumber;
     Button buttonVertify;
     DatabaseReference reff;

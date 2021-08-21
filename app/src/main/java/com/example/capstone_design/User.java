@@ -3,6 +3,7 @@ package com.example.capstone_design;
 public class User {
 
 
+
     private String name; // 습득물 이름
     private int  time; // 게시글 올린 시간
     private String status; // 물품 상태

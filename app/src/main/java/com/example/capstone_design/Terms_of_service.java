@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+
 public class Terms_of_service extends AppCompatActivity {
 
     Button btn_Cancellation,btn_Check;
