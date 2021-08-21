@@ -3,40 +3,34 @@ package com.example.capstone_design;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
-
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.google.android.material.tabs.TabLayout;
+import com.kakao.usermgmt.UserManagement;
+import com.kakao.usermgmt.callback.LogoutResponseCallback;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    ImageButton MyPage_btn;
+    Button close_btn;
+    private DrawerLayout drawerLayout;
+    private View drawerView;
 
-    ImageButton user_btn;
-    Button Creating_a_Post_btn;
+    private String strNick, strProfileImg, strEmail;
 
-    private RecyclerView recyclerView;
-    private RecyclerView.Adapter adapter;
-    private RecyclerView.LayoutManager layoutManager;
-    private ArrayList<Member> arrayList;
-    private FirebaseDatabase database;
-    private DatabaseReference databaseReference;
+    private FragmentPagerAdapter fragmentPagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,125 +41,91 @@ public class MainActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-        user_btn = findViewById(R.id.user_btn);
-        user_btn.setOnClickListener(new View.OnClickListener() {
+        // 뷰페이저 세팅
+        ViewPager viewPager = findViewById(R.id.viewPager);
+        fragmentPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+
+        TabLayout tabLayout = findViewById(R.id.tab_layout);
+        viewPager.setAdapter(fragmentPagerAdapter);
+        tabLayout.setupWithViewPager(viewPager);
+
+        //Navigation Menu 세팅
+        drawerLayout = findViewById(R.id.drawer_layout);
+        drawerView = findViewById(R.id.drawer);
+
+        MyPage_btn = findViewById(R.id.my_page_btn);
+        MyPage_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent_lost = new Intent(MainActivity.this,Lost_Form.class);
-                startActivity(intent_lost);
+                drawerLayout.openDrawer(drawerView);
             }
         });
-
-        Creating_a_Post_btn = findViewById(R.id.Creating_a_Post_btn);
-        Creating_a_Post_btn.setOnClickListener(new View.OnClickListener() {
+        close_btn = findViewById(R.id.navi_close_btn);
+        close_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent99 = new Intent(MainActivity.this, board.class);
-                startActivity(intent99);
+                drawerLayout.closeDrawers();
             }
         });
 
 
-        recyclerView = findViewById(R.id.main_recyclerview); // 아디 연결
-        recyclerView.setHasFixedSize(true); // 리사이클러뷰 기존성능 강화
-        layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-        arrayList = new ArrayList<>(); // User 객체를 담을 어레이 리스트 (어댑터쪽으로)
-
-        database = FirebaseDatabase.getInstance(); // 파이어베이스 데이터베이스 연동
-
-        databaseReference = database.getReference("Member"); // DB 테이블 연결
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+        drawerLayout.addDrawerListener(listener);
+        drawerView.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                // 파이어베이스 데이터베이스의 데이터를 받아오는 곳
-                arrayList.clear(); // 기존 배열리스트가 존재하지않게 초기화
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) { // 반복문으로 데이터 List를 추출해냄
-                    Member member = snapshot.getValue(Member.class); // 만들어뒀던 User 객체에 데이터를 담는다.
-                    arrayList.add(member); // 담은 데이터들을 배열리스트에 넣고 리사이클러뷰로 보낼 준비
-                }
-                adapter.notifyDataSetChanged(); // 리스트 저장 및 새로고침
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                // 디비를 가져오던중 에러 발생 시
-                Log.e("MainActivity", String.valueOf(databaseError.toException())); // 에러문 출력
+            public boolean onTouch(View v, MotionEvent event) {
+                return true;
             }
         });
 
-        adapter = new CustomAdapter(arrayList, this);
-        recyclerView.setAdapter(adapter); // 리사이클러뷰에 어댑터 연결
+        Intent intent =getIntent();
+        strNick = intent.getStringExtra("name");
+        strProfileImg = intent.getStringExtra("profileImg");
+        strEmail = intent.getStringExtra("email");
 
-        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), recyclerView, new ClickListener() {
+        TextView tv_nick = findViewById(R.id.tv_nickName);
+        TextView tv_email = findViewById(R.id.tv_email);
+        ImageView iv_profile = findViewById(R.id.iv_profile);
+
+        //닉네임 set
+        tv_nick.setText(strNick);
+        //이메일 set
+        tv_email.setText(strEmail);
+        //프로필 이미지 사진 set
+        Glide.with(this).load(strProfileImg).into(iv_profile);
+
+        // 로그아웃
+        findViewById(R.id.btn_logout).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view, int position) {
-                Member member = arrayList.get(position);
-//                Toast.makeText(getApplicationContext(), user.getName()+' '+user.getTime()+' '+user.getStatus()+' '+user.getKind(), Toast.LENGTH_LONG).show();
-
-                Intent intent = new Intent(getBaseContext(), ResultActivity.class);
-
-                intent.putExtra("kind",member.getBst());
-                intent.putExtra("name",member.getBln());
-                intent.putExtra("acquisition",member.getBmt());
-                intent.putExtra("time",member.getBdt());
-                intent.putExtra("content",member.getBci());
-                startActivity(intent);
-
-            }
-
-            @Override
-            public void onLongClick(View view, int position) {
-            }
-        }));
-
-    }
-
-    public interface ClickListener {
-        void onClick(View view, int position);
-
-        void onLongClick(View view, int position);
-    }
-
-    public static class RecyclerTouchListener implements RecyclerView.OnItemTouchListener {
-
-        private GestureDetector gestureDetector;
-        private MainActivity.ClickListener clickListener;
-
-        public RecyclerTouchListener(Context context, final RecyclerView recyclerView, final MainActivity.ClickListener clickListener) {
-            this.clickListener = clickListener;
-            gestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
-                @Override
-                public boolean onSingleTapUp(MotionEvent e) {
-                    return true;
-                }
-
-                @Override
-                public void onLongPress(MotionEvent e) {
-                    View child = recyclerView.findChildViewUnder(e.getX(), e.getY());
-                    if (child != null && clickListener != null) {
-                        clickListener.onLongClick(child, recyclerView.getChildAdapterPosition(child));
+            public void onClick(View v) {
+                UserManagement.getInstance().requestLogout(new LogoutResponseCallback() {
+                    @Override
+                    public void onCompleteLogout() {
+                        //로그아웃 성공시 수행하는 지점
+                        finish(); // 현재 액티비티 종료
                     }
-                }
-            });
-        }
-
-        @Override
-        public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
-            View child = rv.findChildViewUnder(e.getX(), e.getY());
-            if (child != null && clickListener != null && gestureDetector.onTouchEvent(e)) {
-                clickListener.onClick(child, rv.getChildAdapterPosition(child));
+                });
             }
-            return false;
-        }
-
-        @Override
-        public void onTouchEvent(RecyclerView rv, MotionEvent e) {
-        }
-
-        @Override
-        public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-        }
+        });
     }
+    DrawerLayout.DrawerListener listener = new DrawerLayout.DrawerListener() {
+        @Override
+        public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
+            //슬라이드 했을때
+        }
 
+        @Override
+        public void onDrawerOpened(@NonNull View drawerView) {
+            //Drawer가 오픈된 상황일때 호출
+        }
+
+        @Override
+        public void onDrawerClosed(@NonNull View drawerView) {
+            //닫힌 상황일 때 호출
+        }
+
+        @Override
+        public void onDrawerStateChanged(int newState) {
+            //특정상태가 변경될 때 호출
+        }
+    };
 }
