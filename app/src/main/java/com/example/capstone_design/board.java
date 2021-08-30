@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -28,6 +29,7 @@ public class board extends AppCompatActivity {
     EditText board_maptext, board_datetext, board_passinput, board_contInput, board_lostnametext;
     Spinner board_sort;
     Button board_submit;
+    TextView board_qrscan;
     DatabaseReference reff;
     Member member;
     long maxid=0;
@@ -43,6 +45,7 @@ public class board extends AppCompatActivity {
         board_passinput=(EditText)findViewById(R.id.board_passinput);
         board_contInput=(EditText)findViewById(R.id.board_contInput);
         board_submit=(Button)findViewById(R.id.board_submit);
+        board_qrscan = findViewById(R.id.board_qrscan);
 
         member=new Member();
         reff=FirebaseDatabase.getInstance().getReference().child("Member");
@@ -57,6 +60,15 @@ public class board extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
+
+        board_qrscan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent222 = new Intent(board.this, QrScanner.class);
+                startActivity(intent222);
+            }
+        });
+
 
         board_submit.setOnClickListener(new View.OnClickListener() {
             @Override

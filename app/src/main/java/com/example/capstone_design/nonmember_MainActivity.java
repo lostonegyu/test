@@ -33,6 +33,7 @@ public class nonmember_MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent_login = new Intent(nonmember_MainActivity.this,LoginActivity.class);
+                intent_login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent_login);
             }
         });

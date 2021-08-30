@@ -101,6 +101,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                                 Toast.makeText(RegisterActivity.this, "회원가입에 성공하셨습니다.",Toast.LENGTH_SHORT).show();
                                 Intent intent_Register = new Intent(RegisterActivity.this,LoginActivity.class);
+                                intent_Register.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(intent_Register);
                             } else {
                                 Toast.makeText(RegisterActivity.this, "이미 사용중인 계정입니다.",Toast.LENGTH_SHORT).show();

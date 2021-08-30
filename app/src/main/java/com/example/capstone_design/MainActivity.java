@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.auth.FirebaseAuth;
 import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.LogoutResponseCallback;
 
@@ -102,7 +103,10 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onCompleteLogout() {
                         //로그아웃 성공시 수행하는 지점
-                        finish(); // 현재 액티비티 종료
+                        FirebaseAuth.getInstance().signOut();
+                        Intent intent_logout = new Intent(MainActivity.this,nonmember_MainActivity.class);
+                        startActivity(intent_logout);
+                        //finish(); // 현재 액티비티 종료
                     }
                 });
             }

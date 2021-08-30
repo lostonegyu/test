@@ -128,9 +128,10 @@ public class LoginActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()) {
                                 // 로그인 성공 !!!
-                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                startActivity(intent);
-                                finish(); // 현재 액티비티 파괴
+                                Intent intent_login = new Intent(LoginActivity.this, MainActivity.class);
+                                intent_login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                startActivity(intent_login);
+                                //finish(); // 현재 액티비티 파괴
                             } else {
                                 Toast.makeText(LoginActivity.this, "이메일 또는 비밀번호를 다시 확인하세요.",Toast.LENGTH_SHORT).show();
                             }
@@ -155,6 +156,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //이용 약관 화면 -> 회원가입 화면
                 Intent intent= new Intent(LoginActivity.this,Terms_of_service.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
         });

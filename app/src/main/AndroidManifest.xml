@@ -4,6 +4,7 @@
     <!-- 인터넷 사용 권한 허용 -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
     <application
         android:name=".CustomApplication"
@@ -38,9 +39,13 @@
         <activity android:name=".board" />
         <activity android:name=".MainActivity"></activity>
 
-        <meta-data
-            android:name="com.kakao.sdk.AppKey"
-            android:value="8edd04e92afbad49f8829baa0869e736" />
+        <activity xmlns:tools="http://schemas.android.com/tools"
+            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+            android:screenOrientation="fullSensor"
+            tools:replace="screenOrientation" />
+
+
+        <meta-data android:name="com.kakao.sdk.AppKey" android:value="8edd04e92afbad49f8829baa0869e736" />
     </application>
 
 </manifest>
