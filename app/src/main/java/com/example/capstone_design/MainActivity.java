@@ -102,10 +102,9 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onCompleteLogout() {
                         //로그아웃 성공시 수행하는 지점
-                        FirebaseAuth.getInstance().signOut();
-                        Intent intent_logout = new Intent(MainActivity.this,nonmember_MainActivity.class);
+                        Intent intent_logout = new Intent(MainActivity.this,LoginActivity.class);
+                        intent_logout.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent_logout);
-                        //finish(); // 현재 액티비티 종료
                     }
                 });
             }

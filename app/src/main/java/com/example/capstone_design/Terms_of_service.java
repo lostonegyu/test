@@ -26,6 +26,7 @@ public class Terms_of_service extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent_cancellation = new Intent(Terms_of_service.this,LoginActivity.class);
+                intent_cancellation.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent_cancellation);
             }
         });

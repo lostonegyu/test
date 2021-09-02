@@ -37,7 +37,9 @@
         <activity android:name=".My_View_Posts" />
         <activity android:name=".Lost_and_found_form" />
         <activity android:name=".board" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity">
+
+        </activity>
 
         <activity xmlns:tools="http://schemas.android.com/tools"
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
