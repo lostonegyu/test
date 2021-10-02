@@ -30,8 +30,7 @@ import com.kakao.util.exception.KakaoException;
 
 import java.util.regex.Pattern;
 
-public class
-LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     private ISessionCallback mSessionCallback;
 
     private FirebaseAuth mFirebaseAuth; // 파이어베이스 인증
@@ -39,7 +38,7 @@ LoginActivity extends AppCompatActivity {
     private EditText mEtEmail, mEtPwd; // 로그인 입력필드
     private static  final Pattern PASSWORD_PATTERN = Pattern.compile("^[a-zA-Z0-9!@.#$%^&*?_~]{4,16}$"); //비밀번호 정규식
 
-    TextView join_membership;
+    TextView join_membership, id_finding_a_password;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -159,5 +158,17 @@ LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        id_finding_a_password =findViewById(R.id.tv_find);
+        id_finding_a_password.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //로그인 화면 -> ID/비밀번호 찾기 화면
+                Intent intent_find = new Intent(LoginActivity.this,Finding_ID_And_Password.class);
+                startActivity(intent_find);
+            }
+        });
+
+
     }
 }

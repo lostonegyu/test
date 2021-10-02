@@ -94,6 +94,16 @@ public class MainActivity extends AppCompatActivity {
         //프로필 이미지 사진 set
         Glide.with(this).load(strProfileImg).into(iv_profile);
 
+        //보안 설정
+        findViewById(R.id.tv_Security_Settings).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //보안 설정 페이지 이동
+                Intent intent_Security_Settings = new Intent(MainActivity.this,Security_Settings.class);
+                startActivity(intent_Security_Settings);
+            }
+        });
+
         // 로그아웃
         findViewById(R.id.btn_logout).setOnClickListener(new View.OnClickListener() {
             @Override

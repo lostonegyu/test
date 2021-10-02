@@ -35,7 +35,7 @@ public class Terms_of_service extends AppCompatActivity {
         btn_Check.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent_ckeck = new Intent(Terms_of_service.this,RegisterActivity.class);
+                Intent intent_ckeck = new Intent(Terms_of_service.this,SMS_authentication.class);
                 startActivity(intent_ckeck);
             }
         });

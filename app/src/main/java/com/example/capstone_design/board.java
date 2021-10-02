@@ -1,6 +1,5 @@
 package com.example.capstone_design;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -19,12 +18,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.io.File;
-import java.util.EventListener;
-import java.util.HashMap;
 
 public class board extends AppCompatActivity {
-
 
     EditText board_maptext, board_datetext, board_passinput, board_contInput, board_lostnametext;
     Spinner board_sort;
@@ -45,7 +40,8 @@ public class board extends AppCompatActivity {
         board_passinput=(EditText)findViewById(R.id.board_passinput);
         board_contInput=(EditText)findViewById(R.id.board_contInput);
         board_submit=(Button)findViewById(R.id.board_submit);
-        board_qrscan = findViewById(R.id.board_qrscan);
+
+
 
         member=new Member();
         reff=FirebaseDatabase.getInstance().getReference().child("Member");
@@ -61,10 +57,11 @@ public class board extends AppCompatActivity {
             }
         });
 
+        board_qrscan = findViewById(R.id.board_qrscan);
         board_qrscan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent222 = new Intent(board.this, QrScanner.class);
+                Intent intent222 = new Intent(board.this, ScanQR.class);
                 startActivity(intent222);
             }
         });
@@ -84,7 +81,6 @@ public class board extends AppCompatActivity {
                 Toast.makeText(board.this,"데이터 입력 완료",Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(board.this, MainActivity.class);
                 startActivity(intent);
-
             }
         });
     }

@@ -7,14 +7,20 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.telephony.PhoneNumberFormattingTextWatcher;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -29,9 +35,10 @@ public class RegisterActivity extends AppCompatActivity {
     private FirebaseAuth mFirebaseAuth; // 파이어베이스 인증
     private DatabaseReference mDatabaseRef; //실시간 데이터베이스
     private EditText mEtEmail, mEtPwd, mEtCPwd,mEtName,mEtPhone; // 회원가입 입력필드
+    private TextView tv_error_email;
     private Button mBtnRegister; // 회원가입 버튼
-    private static  final Pattern PASSWORD_PATTERN = Pattern.compile("^[a-zA-Z0-9!@.#$%^&*?_~]{4,16}$"); //비밀번호 정규식
-
+    private static final Pattern EMAIL_ADDRESS = Pattern.compile("[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" + "\\@" + "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" + "(" + "\\." + "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" + ")+");
+    private static final Pattern PASSWORD_PATTERN = Pattern.compile("^[a-zA-Z0-9!@.#$%^&*?_~]{4,16}$"); //비밀번호 정규식
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,10 +52,35 @@ public class RegisterActivity extends AppCompatActivity {
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("Lost and Found Center");
 
         mEtEmail = findViewById(R.id.et_email);
+        tv_error_email = findViewById(R.id.tv_error_email);
+
+        mEtEmail.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(!Patterns.EMAIL_ADDRESS.matcher(s.toString()).matches()){
+                    tv_error_email.setText("이메일 형식으로 입력해주세요.");    // 경고 메세지
+                }
+                else {
+                    tv_error_email.setText("");         //에러 메세지 제거
+                }
+            }
+        });
+
         mEtPwd = findViewById(R.id.et_pwd);
         mEtCPwd = findViewById(R.id.et_confirm_pwd);
         mEtName = findViewById(R.id.et_name);
         mEtPhone = findViewById(R.id.et_phone);
+        mEtPhone.addTextChangedListener(new PhoneNumberFormattingTextWatcher()); //휴대전화 하이폰
 
         mBtnRegister = findViewById(R.id.btn_check);
 
@@ -59,7 +91,7 @@ public class RegisterActivity extends AppCompatActivity {
                     // 회원가입 처리 시작
                     String strEmail =mEtEmail.getText().toString();
                     //이메일 형식 불일치
-                    if(!Patterns.EMAIL_ADDRESS.matcher(strEmail).matches()) {
+                    if(!EMAIL_ADDRESS.matcher(strEmail).matches()) {
                         Toast.makeText(RegisterActivity.this, "이메일을 올바르게 입력하시오.",Toast.LENGTH_SHORT).show();
                         return;
                     }

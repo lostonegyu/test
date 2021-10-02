@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.capstone_design">
     <!-- 인터넷 사용 권한 허용 -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:name=".CustomApplication"
@@ -16,14 +17,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Capstone_Design"
         android:usesCleartextTraffic="true">
+        <activity android:name=".SMS_authentication"></activity>
+        <activity android:name=".Finding_ID_And_Password" />
+        <activity android:name=".Password_Reset" />
+        <activity android:name=".Security_Settings" />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".nonmember_MainActivity">
-        </activity>
+        <activity android:name=".nonmember_MainActivity" />
         <activity android:name=".Terms_of_service" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegisterActivity" />
@@ -37,17 +42,16 @@
         <activity android:name=".My_View_Posts" />
         <activity android:name=".Lost_and_found_form" />
         <activity android:name=".board" />
-        <activity android:name=".MainActivity">
-
-        </activity>
-
+        <activity android:name=".MainActivity" />
+        <activity android:name=".ScanQR" />
         <activity xmlns:tools="http://schemas.android.com/tools"
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:screenOrientation="fullSensor"
             tools:replace="screenOrientation" />
 
-
-        <meta-data android:name="com.kakao.sdk.AppKey" android:value="8edd04e92afbad49f8829baa0869e736" />
+        <meta-data
+            android:name="com.kakao.sdk.AppKey"
+            android:value="8edd04e92afbad49f8829baa0869e736" />
     </application>
 
 </manifest>
