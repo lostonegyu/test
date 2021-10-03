@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     private FragmentPagerAdapter fragmentPagerAdapter;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
