@@ -29,8 +29,9 @@ public class SMS_authentication extends AppCompatActivity {
     static final int SMS_SEND_PERMISSON = 1;
 
     //인증번호를 비교하기위해 쉐어드에 저장해줍시다.
-    SharedPreferences pref = getPreferences(MODE_PRIVATE);
-    SharedPreferences.Editor editor = pref.edit();
+    Context context = this;
+//    SharedPreferences pref = context.getPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE;
+//    SharedPreferences.Editor editor = pref.edit();
     String checkNum;
 
     @Override

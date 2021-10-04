@@ -10,6 +10,13 @@ public class Member { //
     private String bst; // 종류
     private String stat; // 물품상태
 
+
+    //
+    // 삭제 수정 조건문 (아이디값)
+    // 1.컬럼 하나 더 추가
+    //user 데이터
+    // 로그인하는 아이디 데이터값 인설트
+
     public Member() { }
 
     public String getBmt() {
